@@ -14,7 +14,10 @@ struct Node
   Node* next;   // pointer to the next Node in the list
 
   // Methods
-  
+  Node* getNext();
+  // Precondition: Called on a valid Node object.
+  // Postcondition: Returns a pointer to the Node that is pointed to
+  //    by the 'next' data member on the Node object.
 };
 
 // The LinkedList struct.
