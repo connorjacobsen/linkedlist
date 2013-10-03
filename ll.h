@@ -9,12 +9,22 @@
 // The Node struct. Currently it uses an int data type.
 struct Node 
 {
+  // Data members
   int data;     // the data that the Node holds
   Node* next;   // pointer to the next Node in the list
-}
+
+  // Methods
+  
+};
 
 // The LinkedList struct.
 struct LinkedList
 {
+  // Data members
   Node* head;   // points to the first Node in the list
-}
+
+  // Methods:
+  Node* getHead() { return head; }
+  // Precondition: The LinkedList must be non-empty
+  // Postconditon: Returns the first item of the LinkedList
+};
