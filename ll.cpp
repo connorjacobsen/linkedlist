@@ -17,6 +17,14 @@ bool Node::lastNode()
   return true;
 }
 
+int Node::length()
+{
+  if ( lastNode() )
+    return 1;
+  else
+    return 1 + next->length();
+}
+
 
 /* LinkedList method implementations */
 bool LinkedList::empty()
@@ -30,4 +38,13 @@ bool LinkedList::empty()
 
   /* Otherwise, head is a nullptr and the LinkedList is empty */
   return true;
+}
+
+int LinkedList::length()
+{
+  if ( empty() )
+    return 0;
+
+  else 
+    return head->length();
 }

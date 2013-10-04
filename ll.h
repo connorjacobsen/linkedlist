@@ -17,6 +17,10 @@ struct Node
   bool lastNode();
   // Precondition: Accepts a Node object 
   // Postcondition: Returns 1 if it is the last node, 0 if not the last node
+
+  int length();
+  // Precondition: Called on a Node object
+  // Postcondition: Recursively computes the length of the list
   
 };
 
@@ -31,4 +35,8 @@ struct LinkedList
   bool empty();
   // Precondition: Called on a LinkedList object.
   // Postcondition: Returns 1 if the list is empty, 0 if not empty
+
+  int length();
+  // Precondition: Called on a LinkedList object.
+  // Postconditin: Returns the length of the LinkedList
 };
