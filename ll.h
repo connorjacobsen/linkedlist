@@ -9,24 +9,24 @@
 // The Node struct. Currently it uses an int data type.
 struct Node 
 {
-  // Data members
+  /* Data members */
   int data;     // the data that the Node holds
   Node* next;   // pointer to the next Node in the list
 
-  // Methods
-  Node* getNext();
-  // Precondition: Called on a valid Node object.
-  // Postcondition: Returns a pointer to the Node that is pointed to
-  //    by the 'next' data member on the Node object.
+  /* Methods */
+  bool lastNode();
+  // Precondition: Accepts a Node object 
+  // Postcondition: Returns 1 if it is the last node, 0 if not the last node
+  
 };
 
 // The LinkedList struct.
 struct LinkedList
 {
-  // Data members
+  /* Data members */
   Node* head;   // points to the first Node in the list
 
-  // Methods:
+  /* Methods */
   Node* getHead() { return head; }
   // Precondition: The LinkedList must be non-empty
   // Postconditon: Returns the first item of the LinkedList

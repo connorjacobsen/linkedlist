@@ -4,9 +4,13 @@
  * The cpp file for the 'll' LinkedList and Node library implementation.
  * Code inspired by Dave Small's COP3503 class.
  */
-Node* Node::getNext()
+
+bool Node::lastNode()
 {
-  //if ( next == '0' )
-  //  should probably raise an exception here...
-  return next;
+  /* If next isn't a nullptr, its not the last Node */
+  if ( next != 0 )
+    return false;
+
+  /* Otherwise, it is the last node */
+  return true;
 }
