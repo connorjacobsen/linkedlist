@@ -25,7 +25,14 @@ struct Node
   void append( int data );
   // Precondition: Triggered by the LinkedList append method
   // Postcondition: Adds a Node with data 'data' to the end of the list
-  
+
+  bool contains( int value );
+  // Precondition: Called on a Node object
+  // Postcondition: Returns 1 if the Node contains the value, 0 otherwise
+
+  void insertAt( int value, int const position );
+  // Precondition: Called on a Node object
+  // Postcondition: Recursively inserts a Node with the data 'value' and the given position
 };
 
 
@@ -55,4 +62,13 @@ struct LinkedList
   void append( int data );
   // Precondition: Must be called on a LinkedList object
   // Postcondition: Appends a new Node object to the end of the LinkedList
+
+  bool contains( int value );
+  // Precondition: Called on a LinkedList object
+  // Postcondition: Returns 1 if the LinkedList contains the value, 0 otherwise
+
+  void insertAt( int value, int const position );
+  // Precondition: Called on a LinkedList object
+  // Postcondition: Inserts a Node at the given position with 'value' as its data,
+  //   or inserts the Node at the end of the list if the position is out of index.
 };

@@ -40,6 +40,29 @@ void Node::append( int data )
     next->append( data );
 }
 
+bool Node::contains( int value )
+{
+  if ( data == value )
+    return true;
+  if ( lastNode() )
+    return false;
+  else
+    return next->contains( value );  
+}
+
+void Node::insertAt( int value, int const position )
+{
+  if ( position == 1 || lastNode() ) // BASE CASE
+  {
+    Node* tmp = new Node;
+    tmp->data = value;
+    tmp->next = next;
+    next = tmp;
+  }
+  else
+    next->insertAt( value, position-1 ); // recursive call
+}
+
 
 /* LinkedList method implementations */
 bool LinkedList::empty()
@@ -90,4 +113,21 @@ void LinkedList::append( int data )
   {
     head->append( data );
   }
+}
+
+bool LinkedList::contains( int value )
+{
+  if ( empty() )
+    return false;
+
+  else
+    return head->contains( value ); // call the Node method
+}
+
+void LinkedList::insertAt( int value, int const position )
+{
+  if ( position == 0 || empty() ) 
+    prepend( value );
+  else
+    head->insertAt( value, position );
 }
