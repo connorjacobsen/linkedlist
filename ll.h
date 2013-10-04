@@ -20,6 +20,7 @@ struct Node
   
 };
 
+
 // The LinkedList struct.
 struct LinkedList
 {
@@ -27,7 +28,7 @@ struct LinkedList
   Node* head;   // points to the first Node in the list
 
   /* Methods */
-  Node* getHead() { return head; }
-  // Precondition: The LinkedList must be non-empty
-  // Postconditon: Returns the first item of the LinkedList
+  bool empty();
+  // Precondition: Called on a LinkedList object.
+  // Postcondition: Returns 1 if the list is empty, 0 if not empty
 };
