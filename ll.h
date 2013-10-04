@@ -21,6 +21,10 @@ struct Node
   int length();
   // Precondition: Called on a Node object
   // Postcondition: Recursively computes the length of the list
+
+  void append( int data );
+  // Precondition: Triggered by the LinkedList append method
+  // Postcondition: Adds a Node with data 'data' to the end of the list
   
 };
 
@@ -39,4 +43,16 @@ struct LinkedList
   int length();
   // Precondition: Called on a LinkedList object.
   // Postconditin: Returns the length of the LinkedList
+
+  void prepend( int data );
+  // Precondition: Accepts an int
+  // Postcondition: Adds a Node to the beginning of the LinkedList with the desired data
+
+  int decapitate();
+  // Precondition: Called on a non-empty LinkedList
+  // Postcondition: Returns the data of the removed Node object.
+
+  void append( int data );
+  // Precondition: Must be called on a LinkedList object
+  // Postcondition: Appends a new Node object to the end of the LinkedList
 };

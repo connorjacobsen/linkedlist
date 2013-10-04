@@ -19,10 +19,25 @@ bool Node::lastNode()
 
 int Node::length()
 {
-  if ( lastNode() )
+  if ( lastNode() ) // BASE CASE
     return 1;
   else
     return 1 + next->length();
+}
+
+void Node::append( int data )
+{
+  if ( next == 0 ) // BASE CASE
+  {
+    /* The last Node has been reached, create the new one */
+    Node* tmp = new Node;
+    tmp->data = data;
+    tmp->next = next; // will be the nullptr (or 0)
+    next = tmp;
+  }
+  
+  else
+    next->append( data );
 }
 
 
@@ -42,9 +57,37 @@ bool LinkedList::empty()
 
 int LinkedList::length()
 {
-  if ( empty() )
+  if ( empty() ) // BASE CASE
     return 0;
 
   else 
     return head->length();
+}
+
+void LinkedList::prepend( int data )
+{
+  Node* tmp = new Node;  // create the new Node object
+  tmp->data = data;      // set its data
+  tmp->next = head;      // point next to the next Node
+  head = tmp;            // make head point to the new Node object
+}
+
+int LinkedList::decapitate()
+{
+  int data = head->data;  // capture the data
+  Node* toDelete = head;  // create a ptr to the Node to remove
+  head = head->next;      // point head to the list's second item (or nullptr)
+  delete toDelete;        // delete the Node object
+  return data;            // return the data
+}
+
+void LinkedList::append( int data )
+{
+  if ( empty() )
+    prepend( data );
+
+  else
+  {
+    head->append( data );
+  }
 }
