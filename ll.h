@@ -48,6 +48,10 @@ struct Node
   int decaudate();
   // Precondition: Called on a Node object by its LinkedList.
   // Postcondition: Recursively finds the last Node and deletes its data.
+
+  void clear();
+  // Precondition: Called on a Node object.
+  // Postcondition: Recursively deletes all linked Node objects.
 };
 
 
@@ -99,4 +103,8 @@ struct LinkedList
   int decaudate();
   // Precondition: Called on a LinkedList object.
   // Postcondition: Removes the tail of the LinkedList and returns its data.
+
+  void clear(); // DANGER ZONE
+  // Precondition: Called on a LinkedList object.
+  // Postcondition: Deletes all Nodes in the LinkedList.
 };

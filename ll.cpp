@@ -102,6 +102,16 @@ int Node::decaudate()
     return next->decaudate();
 }
 
+void Node::clear()
+{
+  if ( lastNode() == 0 )
+  {
+    Node* toDelete = next;
+    next->clear(); // recursive step
+    delete toDelete;
+  }
+}
+
 
 /* LinkedList method implementations */
 bool LinkedList::empty()
@@ -190,4 +200,16 @@ void LinkedList::printList()
 int LinkedList::decaudate()
 {
   return head->decaudate();
+}
+
+void LinkedList::clear()
+{
+  if ( empty() )
+    std::cout << "LinkedList already empty!" << std::endl;
+  else
+  {
+    head->clear();
+    delete head; // delete the first Node in the list
+    head = 0; // set head to point to nullptr
+  }
 }
