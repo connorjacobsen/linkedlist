@@ -52,6 +52,14 @@ struct Node
   void clear();
   // Precondition: Called on a Node object.
   // Postcondition: Recursively deletes all linked Node objects.
+
+  int itemAtTail();
+  // Precondition: Called on a Node object
+  // Postcondition: Recursively finds the last Node and returns its data.
+
+  int itemAt( unsigned int const position );
+  // Precondition: Called on a Node object
+  // Postcondition: Recursively goes to desired position and returns its data.
 };
 
 
@@ -107,4 +115,17 @@ struct LinkedList
   void clear(); // DANGER ZONE
   // Precondition: Called on a LinkedList object.
   // Postcondition: Deletes all Nodes in the LinkedList.
+
+  int itemAtHead();
+  // Precondition: Called on LinkedList object that is not empty.
+  // Postcondition: Returns the data held at the Node pointed to by head.
+
+  int itemAtTail();
+  // Precondition: Called on a LinkedList object that is not empty.
+  // Postcondition: Returns the data held at the Node at the end of the list.
+
+  int itemAt( unsigned int const position );
+  // Precondition: Called on a non-empty LinkedList
+  // Postcondition: Returns the value at position 'position' or the value at the tail if
+  //   the position value is larger than the list length.
 };

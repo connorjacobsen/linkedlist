@@ -112,6 +112,24 @@ void Node::clear()
   }
 }
 
+int Node::itemAtTail()
+{
+  if ( lastNode() )
+    return data;
+  else
+    return next->itemAtTail();
+}
+
+int Node::itemAt( unsigned int const position )
+{
+  /* If the next item is the desired position, or the next item is the lastNode
+     and the desired position doesnt exist, return data in next Node */
+  if ( position == 1 || next->lastNode() ) 
+    return next->data;
+  else // Else, check the next one
+    return next->itemAt( position-1 );
+}
+
 
 /* LinkedList method implementations */
 bool LinkedList::empty()
@@ -212,4 +230,22 @@ void LinkedList::clear()
     delete head; // delete the first Node in the list
     head = 0; // set head to point to nullptr
   }
+}
+
+int LinkedList::itemAtHead()
+{
+  return head->data;
+}
+
+int LinkedList::itemAtTail()
+{
+  return head->itemAtTail();
+}
+
+int LinkedList::itemAt( unsigned int const position )
+{
+  if ( position == 0 )
+    return head->data;
+  else
+    return head->itemAt( position );
 }
