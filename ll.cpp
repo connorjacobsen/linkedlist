@@ -88,6 +88,20 @@ void Node::printList( unsigned int const position )
   }
 }
 
+int Node::decaudate()
+{
+  if ( next->lastNode() ) // BASE CASE
+  {
+    int value = next->data; // named value to not conflict with data member name
+    Node* toDelete = next;
+    next = 0; // set next to be the nullptr
+    delete toDelete;
+    return value;
+  }
+  else              // recursive step
+    return next->decaudate();
+}
+
 
 /* LinkedList method implementations */
 bool LinkedList::empty()
@@ -171,4 +185,9 @@ void LinkedList::printList()
     std::cout << "This LinkedList is empty!" << std::endl;
   else           // Else call printList on the Nodes
     head->printList( 0 );
+}
+
+int LinkedList::decaudate()
+{
+  return head->decaudate();
 }

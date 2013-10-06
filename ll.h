@@ -44,6 +44,10 @@ struct Node
   // Postcondition: Prints the Node's data, and if not last node, calls itself on the next Node
   //
   // Useful for visualization and / or debugging.
+
+  int decaudate();
+  // Precondition: Called on a Node object by its LinkedList.
+  // Postcondition: Recursively finds the last Node and deletes its data.
 };
 
 
@@ -91,4 +95,8 @@ struct LinkedList
   void printList();
   // Precondition: Called on a LinkedList object.
   // Postcondition: Prints out the data for each Node in the list and its position.
+
+  int decaudate();
+  // Precondition: Called on a LinkedList object.
+  // Postcondition: Removes the tail of the LinkedList and returns its data.
 };
