@@ -18,7 +18,7 @@ struct Node
   // Precondition: Accepts a Node object 
   // Postcondition: Returns 1 if it is the last node, 0 if not the last node
 
-  int length();
+  unsigned int length();
   // Precondition: Called on a Node object
   // Postcondition: Recursively computes the length of the list
 
@@ -30,9 +30,20 @@ struct Node
   // Precondition: Called on a Node object
   // Postcondition: Returns 1 if the Node contains the value, 0 otherwise
 
-  void insertAt( int value, int const position );
+  void insertAt( int value, unsigned int const position );
   // Precondition: Called on a Node object
   // Postcondition: Recursively inserts a Node with the data 'value' and the given position
+
+  int removeAt( unsigned int const position );
+  // Precondition: Called on a Node object.
+  // Postcondition: If it is the Node at 'position' it is removed and its data is returned,
+  //   else it moves on to the next Node recursively.
+
+  void printList( unsigned int const position );
+  // Precondition: Called on a Node object, accepts the current position.
+  // Postcondition: Prints the Node's data, and if not last node, calls itself on the next Node
+  //
+  // Useful for visualization and / or debugging.
 };
 
 
@@ -47,7 +58,7 @@ struct LinkedList
   // Precondition: Called on a LinkedList object.
   // Postcondition: Returns 1 if the list is empty, 0 if not empty
 
-  int length();
+  unsigned int length();
   // Precondition: Called on a LinkedList object.
   // Postconditin: Returns the length of the LinkedList
 
@@ -67,8 +78,17 @@ struct LinkedList
   // Precondition: Called on a LinkedList object
   // Postcondition: Returns 1 if the LinkedList contains the value, 0 otherwise
 
-  void insertAt( int value, int const position );
+  void insertAt( int value, unsigned int const position );
   // Precondition: Called on a LinkedList object
   // Postcondition: Inserts a Node at the given position with 'value' as its data,
   //   or inserts the Node at the end of the list if the position is out of index.
+
+  int removeAt( unsigned int const position );
+  // Precondition: Called on a LinkedList object.
+  // Postcondition: Deletes the Node at 'position' and returns its data. If the
+  //   position does not exist, it will remove the last Node in the list.
+
+  void printList();
+  // Precondition: Called on a LinkedList object.
+  // Postcondition: Prints out the data for each Node in the list and its position.
 };

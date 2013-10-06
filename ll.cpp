@@ -17,7 +17,7 @@ bool Node::lastNode()
   return true;
 }
 
-int Node::length()
+unsigned int Node::length()
 {
   if ( lastNode() ) // BASE CASE
     return 1;
@@ -50,7 +50,7 @@ bool Node::contains( int value )
     return next->contains( value );  
 }
 
-void Node::insertAt( int value, int const position )
+void Node::insertAt( int value, unsigned int const position )
 {
   if ( position == 1 || lastNode() ) // BASE CASE
   {
@@ -61,6 +61,31 @@ void Node::insertAt( int value, int const position )
   }
   else
     next->insertAt( value, position-1 ); // recursive call
+}
+
+int Node::removeAt( unsigned int const position )
+{
+  if ( position == 1 || lastNode() ) // BASE CASE
+  {
+    int value = next->data; // get the data to return (from next Node)
+    Node* toDelete = next; // create ptr to Node to delete
+    next = next->next;     // make sure list not broken
+    delete toDelete;       // delete the desired Node
+    return value;
+  }
+  else
+    return next->removeAt( position-1 );
+}
+
+void Node::printList( unsigned int const position )
+{
+  if ( lastNode() ) // BASE CASE
+    std::cout << "Position: " << position << ", Data: " << data << std::endl;
+  else
+  {
+    std::cout << "Position: " << position << ", Data: " << data << std::endl;
+    next->printList( position+1 ); // recursive step
+  }
 }
 
 
@@ -78,7 +103,7 @@ bool LinkedList::empty()
   return true;
 }
 
-int LinkedList::length()
+unsigned int LinkedList::length()
 {
   if ( empty() ) // BASE CASE
     return 0;
@@ -124,10 +149,26 @@ bool LinkedList::contains( int value )
     return head->contains( value ); // call the Node method
 }
 
-void LinkedList::insertAt( int value, int const position )
+void LinkedList::insertAt( int value, unsigned int const position )
 {
   if ( position == 0 || empty() ) 
     prepend( value );
   else
     head->insertAt( value, position );
+}
+
+int LinkedList::removeAt( unsigned int const position )
+{
+  if ( position == 0 ) // If we just want to remove the first element
+    decapitate();      // we can use the decapitate function.
+  else                 // Else we need remove at.
+    return head->removeAt( position );
+}
+
+void LinkedList::printList()
+{
+  if ( empty() ) // If empty, print to screen
+    std::cout << "This LinkedList is empty!" << std::endl;
+  else           // Else call printList on the Nodes
+    head->printList( 0 );
 }
